@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <title>Project Management App</title>
   <style>
-    body {
+    body
+    <div style="position: fixed; top: 10px; left: 10px;">
+  <input id="taskInput" placeholder="Yeni görev yaz..." />
+  <button onclick="addTask()">Ekle</button>
+</div>
+    {
       font-family: Arial;
       background: #f4f4f4;
       display: flex;
@@ -61,10 +66,27 @@
         document.getElementById("done").appendChild(task);
       }
     }
+    
 
     // Demo tasks
     createTask("todo", "Design UI");
     createTask("todo", "Setup project");
+    function addTask() {
+  const input = document.getElementById("taskInput");
+  const text = input.value;
+
+  if (text.trim() === "") return;
+
+  createTask("todo", text);
+  input.value = "";
+      function addTask() {
+  const input = document.getElementById("taskInput");
+  const text = input.value;
+
+  if (text.trim() === "") return;
+
+  createTask("todo", text);
+  input.value = "";
   </script>
 
 </body>
