@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Management App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
 
+    .column {
+      background: white;
+      padding: 10px;
+      width: 30%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .task {
+      background: #e3e3e3;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="column" id="todo">
+    <h2>To Do</h2>
+  </div>
+
+  <div class="column" id="inprogress">
+    <h2>In Progress</h2>
+  </div>
+
+  <div class="column" id="done">
+    <h2>Done</h2>
+  </div>
+
+  <script>
+    function createTask(columnId, text) {
+      const task = document.createElement("div");
+      task.className = "task";
+      task.innerText = text;
+
+      task.onclick = () => moveTask(task);
+
+      document.getElementById(columnId).appendChild(task);
+    }
+
+    function moveTask(task) {
+      if (task.parentElement.id === "todo") {
+        document.getElementById("inprogress").appendChild(task);
+      } else if (task.parentElement.id === "inprogress") {
+        document.getElementById("done").appendChild(task);
+      }
+    }
+
+    // Demo tasks
+    createTask("todo", "Design UI");
+    createTask("todo", "Setup project");
+  </script>
+
+</body>
+</html>
